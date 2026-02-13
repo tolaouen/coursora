@@ -1,6 +1,15 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import React from "react";
+import {
+	InputGroup,
+	InputGroupAddon,
+	InputGroupInput,
+} from "@/components/ui/input-group";
 import {
 	Card,
 	CardAction,
@@ -28,6 +37,7 @@ import {
 } from "lucide-react";
 
 export default function Home() {
+	const [search, setSearch] = React.useState("");
 	const categories_first = [
 		{
 			icon: <BriefcaseBusiness />,
@@ -299,107 +309,214 @@ export default function Home() {
 		},
 	];
 	return (
-		<div>
+		<div className="w-full max-w-7xl mx-auto ">
 			{/* Categories section */}
 			<section className="flex flex-col gap-2 mt-10">
-				<div>
+				<div className="flex flex-col gap-2">
 					<h4 className="text-[20px] font-bold text-black">
 						Explore Categories
 					</h4>
 				</div>
 				{/* List items categoriese first*/}
-				<div className="flex flex-row gap-5">
+				<div className="flex flex-row lg:gap-5">
 					<div className="lg:flex lg:flex-row lg:justify-center lg:items-center lg:flex-nowrap lg:gap-2 md:flex md:flex-row md:flex-wrap md:jusitify-center md:items-center sm:flex sm:flex-row sm:flex-wrap sm:justify-center sm:items-center md:gap-2 sm:gap-2 flex flex-row flex-wrap  items-center gap-2">
 						{categories_first.map((items) => (
-							<Button
-								key={items.name}
-								variant={"secondary"}
-								className="text-[12px] rounded-2xl">
-								{items.icon}
-								{items.name}
-							</Button>
+							<div>
+								<Button
+									key={items.name}
+									variant={"secondary"}
+									className="text-[8px] rounded-2xl md:text-[10px] lg:text-[11px] capitalize">
+									{items.icon}
+									{items.name}
+								</Button>
+							</div>
 						))}
 					</div>
+					{/* Search dialog  content */}
 					<div>
-						<Button className="text-[12px] bg-blue-500 rounded-full">
-							<Search />
-						</Button>
+						<Dialog>
+							<DialogTrigger asChild>
+								<Button className="text-[12px] bg-blue-500 rounded-full">
+									<Search />
+								</Button>
+							</DialogTrigger>
+							<DialogContent className="!max-w-none lg:w-[70vw] lg:top-80 md:top-103 top-105 pt-14 px-15 flex flex-col gap-5">
+								<div className="flex flex-row gap-1 justify-center h-0">
+									<div className="w-full">
+										<InputGroup>
+											<InputGroupInput
+												placeholder="Search..."
+												onChange={(e) => setSearch(e.target.value)}
+											/>
+											<InputGroupAddon>
+												<Search />
+											</InputGroupAddon>
+										</InputGroup>
+									</div>
+									<div>
+										<Button
+											className="rounded-sm bg-green-500 text-white"
+											variant={"outline"}
+											disabled={!search.trim()}>
+											Search
+										</Button>
+									</div>
+								</div>
+								{/* Categories list in search dialog */}
+								<div className="flex flex-row flex-wrap gap-2 lg:flex lg:flex-row lg:flex-nowrap md:flex md:flex-row md:flex-wrap sm:flex sm:flex-row sm:flex-wrap mt-7">
+									{categories_second.map((items) => (
+										<div key={items.name}>
+											<Button
+												variant={"secondary"}
+												className="text-[8px] rounded-2xl lg:text-[10px]">
+												{items.icon}
+												{items.name}
+											</Button>
+										</div>
+									))}
+								</div>
+								{/* line break card*/}
+								<hr/>
+								{/* Search card content list appear higtlight view when user searched input*/}
+								<div>
+									<div className="w-full">
+										<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 w-full">
+											{card_items.map((item) => (
+												<Card
+													key={item.id}
+													className="lg:px-3 lg:py-3 md:px-2 md:py-2 sm:px-2 sm:py-2 px-1 py-1 hover:shadow-xl transition duration-300 hover:-translate-y-1 cursor-pointer flex flex-col">
+													<div className="flex flex-col gap-3 h-full">
+														<div className="flex flex-col gap-2 flex-1">
+															<div>
+																{/* Image */}
+																<Image
+																	src={item.image || "/placeholder.svg"}
+																	alt={item.title}
+																	width={320}
+																	height={120}
+																	className="rounded-lg object-cover w-full h-32"
+																/>
+															</div>
+															{/* Provider */}
+															<div className="flex items-center gap-2">
+																<Badge variant="ghost" className="p-1">
+																	<Image
+																		src={
+																			item.provider.src || "/placeholder.svg"
+																		}
+																		alt={item.provider.name}
+																		width={16}
+																		height={16}
+																	/>
+																</Badge>
+
+																<span className="text-xs md:text-sm font-semibold text-gray-500">
+																	{item.provider.name}
+																</span>
+															</div>
+
+															{/* Title */}
+															<CardTitle className="text-sm md:text-base leading-snug line-clamp-2">
+																{item.title}
+															</CardTitle>
+														</div>
+
+														<div className="space-y-2 pt-2 border-t">
+															{/* Description */}
+															<CardDescription className="text-xs md:text-sm">
+																{item.description}
+															</CardDescription>
+
+															{/* Rating */}
+															<div className="flex items-center gap-1 text-gray-500 text-xs">
+																{item.rate.icon}
+																<span className="font-medium">
+																	{item.rate.point}
+																</span>
+															</div>
+														</div>
+													</div>
+												</Card>
+											))}
+										</div>
+									</div>
+								</div>
+							</DialogContent>
+						</Dialog>
 					</div>
 				</div>
 				{/* List items categories second */}
 				<div className="lg:flex lg:flex-row lg:gap-2 lg:flex-nowrap md:flex md:flex-row md:flex-wrap md:gap-2 sm:flex sm:flex-row sm:flex-wrap sm:items-center sm:gap-2 flex flex-row flex-wrap gap-2 ">
 					{categories_second.map((items) => (
-						<Button
-							key={items.name}
-							variant={"secondary"}
-							className="text-[12px] rounded-2xl">
-							{items.icon}
-							{items.name}
-						</Button>
+						<div key={items.name} className="hidden md:block">
+							<Button variant={"secondary"} className="text-[12px] rounded-2xl">
+								{items.icon}
+								{items.name}
+							</Button>
+						</div>
 					))}
 				</div>
 			</section>
 			{/* Card Section display courses review */}
-			<section className="my-5">
+			<section className="my-8 md:px-0">
 				<main>
-					<Card className="flex flex-row gap-25 px-4 bg-linear-to-r from-cyan-500 to-blue-500 py-3">
-						<div className="flex flex-col justify-center gap-3 lg:max-w-[220px]">
-							<h3 className="text-[20px] font-semibold w-40 text-white">
+					<Card className="flex flex-col lg:flex-row gap-3 p-4 md:p-6 bg-linear-to-r from-cyan-500 to-blue-500 rounded-lg">
+						<div className="flex flex-col justify-center gap-3 lg:min-w-[180px] w-[350px]">
+							<h3 className="text-xl md:text-2xl font-semibold text-white text-balance">
 								Hot new releases
 							</h3>
-							<Button variant={"outline"} className="text-[#2c73d2]">
-								Explore Courses <ArrowRight />
+							<Button variant={"outline"} className="text-blue-600 w-fit">
+								Explore Courses <ArrowRight width={16} height={16} />
 							</Button>
 						</div>
-						<div>
-							<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 xl:grid-cols-4 gap-3 w-full ">
+						<div className="w-full">
+							<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 w-full">
 								{card_items.map((item) => (
 									<Card
 										key={item.id}
-										className="px-2 hover:shadow-xl transition duration-300 hover:-translate-y-1 cursor-pointer py-2">
-										<div className="space-y-3 lg:flex lg:flex-col sm:flex sm:flex-row  gap-2 w-full ">
-											<div className="flex flex-col gap-1 justify-start">
+										className="lg:px-3 lg:py-3 md:px-2 md:py-2 sm:px-2 sm:py-2 px-1 py-1 hover:shadow-xl transition duration-300 hover:-translate-y-1 cursor-pointer flex flex-col">
+										<div className="flex flex-col gap-3 h-full">
+											<div className="flex flex-col gap-2 flex-1">
 												<div>
 													{/* Image */}
 													<Image
-														src={item.image}
+														src={item.image || "/placeholder.svg"}
 														alt={item.title}
 														width={320}
 														height={120}
-														className="rounded-xl object-cover w-full"
+														className="rounded-lg object-cover w-full h-32"
 													/>
 												</div>
 												{/* Provider */}
-
 												<div className="flex items-center gap-2">
 													<Badge variant="ghost" className="p-1">
 														<Image
-															src={item.provider.src}
+															src={item.provider.src || "/placeholder.svg"}
 															alt={item.provider.name}
-															width={18}
-															height={18}
+															width={16}
+															height={16}
 														/>
 													</Badge>
 
-													<span className="text-sm font-semibold text-gray-500">
+													<span className="text-xs md:text-sm font-semibold text-gray-500">
 														{item.provider.name}
 													</span>
 												</div>
 
 												{/* Title */}
-												<CardTitle className="text-lg leading-snug">
+												<CardTitle className="text-sm md:text-base leading-snug line-clamp-2">
 													{item.title}
 												</CardTitle>
 											</div>
 
-											<div>
+											<div className="space-y-2 pt-2 border-t">
 												{/* Description */}
-												<CardDescription className="pt-6">
+												<CardDescription className="text-xs md:text-sm">
 													{item.description}
 												</CardDescription>
 
 												{/* Rating */}
-												<div className="flex items-center gap-1 text-gray-500 text-[12px]">
+												<div className="flex items-center gap-1 text-gray-500 text-xs">
 													{item.rate.icon}
 													<span className="font-medium">{item.rate.point}</span>
 												</div>
@@ -413,41 +530,43 @@ export default function Home() {
 				</main>
 			</section>
 			{/* Section Card Explore Career */}
-			<section className="my-10">
-				<main className="flex flex-col gap-3">
-					<div className="flex flex-row gap-1 items-center">
-						<h3 className="text-[18px] font-semibold">Explore Careers</h3>
-						<Button variant={"link"} className="text-[#2c73d2]">
-							Explore all <ArrowRight />
+			<section className="my-8 px-1 md:px-0">
+				<main className="flex flex-col gap-4">
+					<div className="flex flex-col sm:flex-row sm:items-center gap-2">
+						<h3 className="text-xl md:text-2xl font-semibold">
+							Explore Careers
+						</h3>
+						<Button variant={"link"} className="text-blue-600 w-fit p-0">
+							Explore all <ArrowRight width={16} height={16} />
 						</Button>
 					</div>
-					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3 w-full ">
+					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 w-full">
 						{career_explorer.map((item) => (
 							<Card
 								key={item.id}
-								className="px-2 hover:shadow-xl transition duration-300 hover:-translate-y-1 cursor-pointer rounded-lg py-2">
-								<div className="space-y-3 lg:flex lg:flex-col sm:flex sm:flex-row  gap-2 w-full ">
-									<div className="flex flex-col gap-3 justify-start pb-4">
+								className="px-3 py-3 hover:shadow-lg transition duration-300 hover:-translate-y-1 cursor-pointer rounded-lg flex flex-col h-full">
+								<div className="flex flex-col gap-3 h-full">
+									<div className="flex flex-col gap-3 flex-1">
 										<div>
 											{/* Image */}
 											<Image
-												src={item.image}
+												src={item.image || "/placeholder.svg"}
 												alt={item.title}
 												width={320}
 												height={120}
-												className="rounded-md bject-cover w-full"
+												className="rounded-md object-cover w-full h-32"
 											/>
 										</div>
 
 										{/* Title */}
 										<div>
-											<CardTitle className="text-lg leading-snug text-[15px]">
+											<CardTitle className="text-sm md:text-base leading-snug line-clamp-2">
 												{item.title}
 											</CardTitle>
 										</div>
 										<div>
 											{/* Description */}
-											<CardDescription className="text-[12px]">
+											<CardDescription className="text-xs md:text-sm line-clamp-2">
 												{item.description}
 											</CardDescription>
 										</div>
@@ -458,12 +577,11 @@ export default function Home() {
 					</div>
 				</main>
 			</section>
-
 			{/* Card Section display popular in the coursora */}
 			<section className="my-5">
 				<main className="flex flex-col gap-3">
 					<div>
-						<h3 className="text-[18px] font-semibold">
+						<h3 className="text-xl md:text-2xl font-semibold">
 							Most popular by category
 						</h3>
 					</div>
@@ -483,11 +601,11 @@ export default function Home() {
 								</div>
 								{/*  */}
 								<div className="grid gap-2">
-									{/* Horizontal Card Content */}
+									{/* Horizontal Card Content */} 
 									{item.card.map((categories) => (
 										<Card
 											key={categories.id}
-											className="p-1 hover:shadow-lg transition cursor-pointer rounded-md">
+											className="p-1 hover:shadow-lg transition cursor-pointer rounded-xl">
 											<div className="flex gap-4">
 												<Image
 													src={categories.image}
