@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import {
 	HoverCard,
 	HoverCardContent,
@@ -11,11 +12,13 @@ export default function NavbarPage() {
 		<main className="flex flex-row gap-15 justify-center items-center px-20 py-2 fixed bg-amber-100">
 			{/* Logo SDF  */}
 			<div>
-				<img
-					className="w-50"
-					src="https://sdfcambodia.org/wp-content/uploads/2025/07/SDF-logo-png-scaled-e1753349114197.png"
-					alt="SDF Image"
-				/>
+				<Link href="/">
+					<img
+						className="w-50"
+						src="https://sdfcambodia.org/wp-content/uploads/2025/07/SDF-logo-png-scaled-e1753349114197.png"
+						alt="SDF Image"
+					/>
+				</Link>
 			</div>
 			<div className="flex flex-row justify-center items-center px-10">
 				{/* List main content */}
@@ -29,7 +32,7 @@ export default function NavbarPage() {
 						<HoverCardContent>
 							<div className="flex flex-col justify-start items-start">
 								<Button variant={"ghost"} className="pr-30" size={"sm"}>
-									Who We Are
+									<Link href="/detail">Details</Link>
 								</Button>
 								<Button variant={"ghost"} className="pr-30" size={"sm"}>
 									New & Events
@@ -50,7 +53,10 @@ export default function NavbarPage() {
 						</HoverCardTrigger>
 						<HoverCardContent>
 							<div className="flex flex-col justify-start items-start">
-								<Button variant={"ghost"} className="pr-20 py-7 flex flex-col" size={"sm"}>
+								<Button
+									variant={"ghost"}
+									className="pr-20 py-7 flex flex-col"
+									size={"sm"}>
 									<p>Interprises / Business</p>
 									<p>Associations</p>
 								</Button>
