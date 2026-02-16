@@ -20,6 +20,10 @@ export const siteConfig =  {
             href: "/about",
             label: "About",
         }
+        , {
+            href: "/detail",
+            label: "Detail",
+        }
     ]
 
     
