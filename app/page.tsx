@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import React from "react";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
 	InputGroup,
 	InputGroupAddon,
@@ -376,7 +377,7 @@ export default function Home() {
 									))}
 								</div>
 								{/* line break card*/}
-								<hr/>
+								<hr />
 								{/* Search card content list appear higtlight view when user searched input*/}
 								<div>
 									<div className="w-full">
@@ -601,7 +602,7 @@ export default function Home() {
 								</div>
 								{/*  */}
 								<div className="grid gap-2">
-									{/* Horizontal Card Content */} 
+									{/* Horizontal Card Content */}
 									{item.card.map((categories) => (
 										<Card
 											key={categories.id}
