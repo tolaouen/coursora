@@ -84,38 +84,12 @@ export default function DetailPage() {
 	];
 	return (
 		<section>
-			<div className="flex flex-row font-sm text-[12px] items-center gap-1 text-muted-foreground">
-				<div>
-					<a href="#">
-						<Home width={15} />
-					</a>
-				</div>
-				<div>
-					<ChevronRight width={15} />
-				</div>
-				<div>
-					<a href="#">Browse</a>
-				</div>
-				<div>
-					<ChevronRight width={15} />
-				</div>
-				<div>
-					<a href="#">Computer Science</a>
-				</div>
-				<div>
-					<ChevronRight width={15} />
-				</div>
-				<div>
-					<a href="#">Software Development</a>
-				</div>
-			</div>
-
 			{/* Card display detail view course */}
 			<div>
-				<Card className="p-2">
+				<Card className="lg:p-3 md:p-3 sm:p-2 p-1 lg:rounded-4xl md:rounded-3xl sm:rounded-2xl rounded-md bg-[#D9D9D9]">
 					{/* Card detail about course */}
 					<div>
-						<Card className="flex flex-row lg:gap-10 md:gap-7 sm:gap-5 gap-2 items-center p-1 lg:p-4 md:p-3 sm:p-2">
+						<Card className="flex flex-row lg:gap-10 md:gap-7 sm:gap-5 gap-2 items-center p-1 lg:p-4 md:p-3 sm:p-2 ">
 							<div>
 								<img
 									src="/image.jpeg"
@@ -123,7 +97,7 @@ export default function DetailPage() {
 									className="rounded-lg object-cover lg:w-[600] md:w-[400] sm:w-[300] w-[200] "
 								/>
 							</div>
-							<div className="flex flex-col lg:gap-3 md:gap-2 sm:gap-2 gap-1">
+							<div className="flex flex-col lg:gap-6 md:gap-4 sm:gap-2 gap-1">
 								<div>
 									<CardTitle className="font-meduim lg:text-[14px] md:text-[14px] sm:text-[12px] text-[10px] text-muted-foreground">
 										សេដ្ឋកិច្ចក្រៅប្រព័ន្ធ
@@ -132,7 +106,7 @@ export default function DetailPage() {
 										Web Development and Cloud Computing Specialization
 									</CardDescription>
 								</div>
-								<div className="flex flex-row lg:gap-3 md:gap-2 sm:gap-2 gap-1 items-center">
+								<div className="flex flex-row lg:gap-3 md:gap-2 sm:gap-2 gap-1 items-center border-b pb-2 lg:w-100 md:w-100 sm:w-85 w-50">
 									<img
 										src="/google.png"
 										alt="Google"
@@ -142,9 +116,9 @@ export default function DetailPage() {
 										Google Adcademy
 									</p>
 								</div>
-								<div className="flex flex-row lg:gap-20 md:gap-10 sm:gap-10 gap-4 items-center">
+								<div className="flex flex-row lg:gap-38 md:gap-40 sm:gap-30 gap-12 items-center">
 									<div className="flex flex-col lg:gap-2 text-[18px]">
-										<h3 className="font-semibold  lg:text-[16px] md:text-[14px] sm:text-[12px] text-[8px]">
+										<h3 className="font-semibold  lg:text-[18px] md:text-[16px] sm:text-[12px] text-[8px]">
 											Course Fee
 										</h3>
 										<p className="text-green-500 font-semibold lg:text-[16px] md:text-[14px] sm:text-[12px] text-[8px]">
@@ -157,7 +131,7 @@ export default function DetailPage() {
 											<DialogTrigger asChild>
 												<Button
 													variant={"outline"}
-													className="font-bold bg-linear-to-tl from-[#297ec8] to-[#94ef24] text-white hover:text-white text-[8px] rounded-2xl md:text-[12px] lg:text-[14px] sm:text-[11px] capitalize lg:size-10 lg:w-30 lg:h-10 sm:size-10 sm:h-8 sm:w-30 size-10 w-21 h-6">
+													className="font-bold bg-linear-to-tl from-[#6DCC56] to-[#2D6C68] text-white hover:text-white text-[8px] rounded-2xl md:text-[12px] lg:text-[14px] sm:text-[11px] capitalize lg:size-10 lg:w-30 lg:h-10 sm:size-10 sm:h-8 sm:w-30 size-10 w-21 h-6">
 													Enroll Now
 													<ChevronRight />
 												</Button>
@@ -232,7 +206,7 @@ export default function DetailPage() {
 								</ul>
 							</div>
 						</div>
-						<div className="border rounded-2xl lg:p-3 md:p-2 sm:p-1 p-1 w-60 ">
+						<div className="border border-[#aaa3a3] rounded-2xl lg:p-3 md:p-2 sm:p-1 p-1 w-60 ">
 							<div>
 								<h3 className="lg:text-[20px] md:text-[16px] sm:text-[14px] text-[10px] font-bold">
 									Course Overview

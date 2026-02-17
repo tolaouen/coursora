@@ -29,11 +29,8 @@ export default function RootLayout({
 		<html lang="en">
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<main className="flex flex-col w-full">
+				<main>
 					<div>
-						<NavbarPage/>
-					</div>
-					<div className="lg:mx-25 md:mx-15 sm:mx-10 mx-5 my-20 ">
 						<TooltipProvider>{children}</TooltipProvider>
 					</div>
 				</main>
