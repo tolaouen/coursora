@@ -13,8 +13,8 @@ export default function CourseLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<main className="mx-15 my-10">
-			<div className="my-2">
+		<main className="lg:mx-15 md:mx-13 sm:mx-10 mx-5 my-10">
+			<div className="mt-23">
 				<div className="flex flex-row font-sm text-[12px] items-center gap-1 text-muted-foreground font-semibold">
 					<div>
 						<a href="/">Explore Categories</a>
