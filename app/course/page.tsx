@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap } from "lucide-react";
+import { motion } from "motion/react";
 import {
 	Card,
 	CardContent,
@@ -9,6 +10,7 @@ import {
 	CardDescription,
 } from "@/components/ui/card";
 import { useState } from "react";
+import { div } from "motion/react-client";
 export default function CoursePage() {
 	const description: string = `Explore computer science courses on Coursora to equip your with job relevant skills for variety of roles. Learn programming techniques and build technical skills on course on software development, algorithm design, system architecture, and more.`;
 	const courses = ["All", "Beginner", "Intermediate", "Advance"];
@@ -26,6 +28,7 @@ export default function CoursePage() {
 			title: "Introduction to Python Programming",
 			description: "Course",
 			status: "Preview",
+			bill: null,
 		},
 		{
 			id: 2,
@@ -37,12 +40,10 @@ export default function CoursePage() {
 			title: "Data Science and Machine Learning",
 			description: "Course",
 			status: "Free Trial",
+			bill: null,
 		},
-	];
-
-	const course_card_2 = [
 		{
-			id: 1,
+			id: 3,
 			image: "/computer-science.jpeg",
 			provider: {
 				icon: "/harvard.png",
@@ -57,7 +58,7 @@ export default function CoursePage() {
 			},
 		},
 		{
-			id: 2,
+			id: 4,
 			image: "/computer-science.jpeg",
 			provider: {
 				icon: "/harvard.png",
@@ -92,7 +93,7 @@ export default function CoursePage() {
 				icon: "/harvard.png",
 				name: "Harvard University",
 			},
-			title: "Computer Science",
+			title: "Software Developement",
 			description: "Course",
 			status: "Free Trial",
 		},
@@ -103,7 +104,7 @@ export default function CoursePage() {
 				icon: "/harvard.png",
 				name: "Harvard University",
 			},
-			title: "Computer Science",
+			title: "Software Engineering",
 			description: "Course",
 			status: "Free Trial",
 		},
@@ -114,7 +115,7 @@ export default function CoursePage() {
 				icon: "/harvard.png",
 				name: "Harvard University",
 			},
-			title: "Computer Science",
+			title: "Ethical Hacking",
 			description: "Specialization",
 			status: "Free Trial",
 		},
@@ -125,7 +126,7 @@ export default function CoursePage() {
 				icon: "/harvard.png",
 				name: "Harvard University",
 			},
-			title: "Computer Science",
+			title: "Linux System Admistater",
 			description: "Course",
 			status: "Free Trial",
 		},
@@ -136,7 +137,7 @@ export default function CoursePage() {
 				icon: "/harvard.png",
 				name: "Harvard University",
 			},
-			title: "Computer Science",
+			title: "Bckend Development",
 			description: "Guided Project",
 			status: "Free Trial",
 		},
@@ -147,7 +148,7 @@ export default function CoursePage() {
 				icon: "/harvard.png",
 				name: "Harvard University",
 			},
-			title: "Computer Science",
+			title: "Full-Stack Development",
 			description: "Course",
 			status: "Free Trial",
 		},
@@ -158,22 +159,26 @@ export default function CoursePage() {
 				icon: "/harvard.png",
 				name: "Harvard University",
 			},
-			title: "Computer Science",
+			title: "Network and Security",
 			description: "Course",
 			status: "Free Trial",
 		},
 	];
 	return (
 		<div>
-			<section className="flex flex-row justify-between items-center gap-2 ">
-				<div className="w-[800]">
+			<section className="lg:flex lg:flex-row lg:justify-between lg:items-center lg:gap-2 md:flex md:flex-row md:justify-between md:items-center md:gap-2">
+				<div className="lg:w-[800]">
 					<div>
-						<h1 className="text-[32px] font-semibold mb-2">Computer Science</h1>
-						<p className="w-[700] text-muted-foreground">{description}</p>
+						<h1 className="lg:text-[32px] md:text-[28px] sm:text-[25px] text-[20] font-semibold mb-2">
+							Computer Science
+						</h1>
+						<p className="lg:w-[700] text-muted-foreground lg:text-[16px] md:text-[14px] sm:text-[12px] text-[10px]">
+							{description}
+						</p>
 					</div>
 				</div>
 				<div className="flex flex-col gap-6 mt-10">
-					<div className="flex flex-row gap-4  justify-center items-center">
+					<div className="flex flex-row gap-4  justify-center items-center  lg:text-[16px] md:text-[14px] sm:text-[12px] text-[10px] ">
 						<div>
 							<h1 className="text-black font-semibold">373</h1>
 							<p className="text-muted-foreground">credentials</p>
@@ -187,12 +192,13 @@ export default function CoursePage() {
 							<p className="text-muted-foreground">courses</p>
 						</div>
 					</div>
-					<div className="flex flex-row gap-2">
+					<div className="flex flex-row gap-2 items-center justify-center">
 						{courses.map((item) => (
 							<Button
 								key={item}
 								onClick={() => setActive(item)}
-								className={`rounded-3xl text-[12px] border hover:bg-black hover:text-white transition-all ${active === item ? "bg-black text-white" : "bg-white text-black"}`}>
+								size="default"
+								className={`rounded-3xl lg:text-[12px] text-[10px] border hover:bg-black hover:text-white transition-all ${active === item ? "bg-black text-white" : "bg-white text-black"} `}>
 								{item}
 							</Button>
 						))}
@@ -201,15 +207,80 @@ export default function CoursePage() {
 			</section>
 			<section className="my-4">
 				<div>
-					<h1 className="text-[20px] font-semibold mb-1">
+					<h1 className="lg:text-[20px] md:text-[20px] sm:text-[18px] text-[16px] font-semibold mb-1">
 						Introduction to Computer Programming Using Python
 					</h1>
 				</div>
 				{/* card content related course search review on the tops */}
-				<div className="flex flex-row gap-4">
-					<div className="flex flex-row gap-4 justify-between">
+				<div>
+					<div className="grid grid-cols-2 gap-1 sm:grid sm:grid-cols-2 sm:gap-2  md:grid md:grid-cols-3 md:gap-3 lg:grid lg:grid-cols-4 lg:gap-4 lg:justify-center">
 						{course_card_1.map((item) => (
-							<Card key={item.id} className="p-2 relative w-80">
+							<motion.div
+								key={item.id}
+								whileHover={{ y: -6, scale: 1.03 }}
+								whileTap={{ scale: 0.98 }}
+								transition={{ type: "spring", stiffness: 260 }}
+								className="h-full">
+								<Card className="p-2 relative flex flex-col justify-between h-full cursor-pointer hover:shadow-xl transition-shadow duration-300">
+									{/* Badge */}
+									<Badge
+										variant="default"
+										className="absolute top-3 right-3 bg-white text-black text-[12px]">
+										{item.status}
+									</Badge>
+
+									<div className="flex flex-col gap-3">
+										{/* Course Image */}
+										<img
+											src={item.image}
+											alt={item.title}
+											className="w-full h-40 rounded-lg object-cover"
+										/>
+
+										{/* Provider */}
+										<div className="flex gap-3 items-center text-muted-foreground text-[13px]">
+											<img
+												src={item.provider.icon || "/placeholder.svg"}
+												alt={item.provider.name}
+												className="w-7 h-7 rounded-full object-cover"
+											/>
+											<h2>{item.provider.name}</h2>
+										</div>
+
+										{/* Title */}
+										<div className="lg:text-[16px] md:text-[15px] sm:text-[14px] text-[13px] h-[40]">
+											<CardTitle>{item.title}</CardTitle>
+										</div>
+									</div>
+
+									{/* Bottom Section */}
+									<div className="text-muted-foreground text-[13px] mt-2">
+										{item.bill ? (
+											<div className="flex gap-2 items-center text-blue-500">
+												<span>{item.bill.icon}</span>
+												<span>{item.bill.name}</span>
+											</div>
+										) : null}
+										<p>{item.description}</p>
+									</div>
+								</Card>
+							</motion.div>
+						))}
+					</div>
+				</div>
+			</section>
+			<section className="mt-10 hidden md:block">
+				<div className="lg:grid lg:grid-cols-4 lg:gap-4 md:grid md:grid-cols-3 md:gap-3 sm:grid sm:grid-cols-3 sm:gap-2 grid grid-cols-2 gap-1">
+					{course_card_3.map((item) => (
+						<motion.div
+							key={item.id}
+							whileHover={{ y: -6, scale: 1.03 }}
+							whileTap={{ scale: 0.98 }}
+							transition={{ type: "spring", stiffness: 260 }}
+							className="h-full">
+							<Card
+								key={item.id}
+								className="p-2 relative flex flex-col justify-between lg:w-80">
 								{/* Badge */}
 								<Badge
 									variant="default"
@@ -238,7 +309,7 @@ export default function CoursePage() {
 									</div>
 
 									{/* Title */}
-									<div className="text-[16px] h-[55] w-full">
+									<div className="lg:text-[16px] md:text-[15px] sm:text-[14px] text-[12px] h-[55] w-full">
 										<CardTitle>{item.title}</CardTitle>
 									</div>
 
@@ -248,102 +319,7 @@ export default function CoursePage() {
 									</div>
 								</div>
 							</Card>
-						))}
-					</div>
-
-					<div>
-						<div className="flex flex-row gap-4 justify-between">
-							{course_card_2.map((item) => (
-								<Card key={item.id} className="p-2 relative w-80">
-									{/* Badge */}
-									<Badge
-										variant="default"
-										className="absolute top-3 right-3 bg-white text-black text-[12px]">
-										{item.status}
-									</Badge>
-
-									<div className="flex flex-col items-center gap-3">
-										{/* Course Image */}
-										<img
-											src={item.image}
-											alt={item.title}
-											width={320}
-											height={120}
-											className="w-full h-40 rounded-lg object-cover"
-										/>
-
-										{/* Provider */}
-										<div className="flex flex-row gap-3 items-center font-medium text-muted-foreground text-[13px] w-full">
-											<img
-												src={item.provider.icon || "/placeholder.svg"}
-												alt={item.provider.name}
-												className="w-7 h-7 rounded-full object-cover"
-											/>
-											<h2>{item.provider.name}</h2>
-										</div>
-
-										{/* Title */}
-										<div className="text-[16px] h-[35] w-full">
-											<CardTitle>{item.title}</CardTitle>
-										</div>
-
-										{/* Description */}
-										<div className="text-muted-foreground text-[13px] w-full">
-											<div className="flex flex-row gap-2 items-center text-green-400">
-												<h1>{item.bill.icon}</h1>
-												<p>{item.bill.name}</p>
-											</div>
-											<p>{item.description}</p>
-										</div>
-									</div>
-								</Card>
-							))}
-						</div>
-					</div>
-				</div>
-			</section>
-			<section className="mt-10">
-				<div className="grid grid-cols-4 gap-4">
-					{course_card_3.map((item) => (
-						<Card key={item.id} className="p-2 relative w-80">
-							{/* Badge */}
-							<Badge
-								variant="default"
-								className="absolute top-3 right-3 bg-white text-black text-[12px]">
-								{item.status}
-							</Badge>
-
-							<div className="flex flex-col items-center gap-3">
-								{/* Course Image */}
-								<img
-									src={item.image}
-									alt={item.title}
-									width={320}
-									height={120}
-									className="w-full h-40 rounded-lg object-cover"
-								/>
-
-								{/* Provider */}
-								<div className="flex flex-row gap-3 items-center font-medium text-muted-foreground text-[13px] w-full">
-									<img
-										src={item.provider.icon || "/placeholder.svg"}
-										alt={item.provider.name}
-										className="w-7 h-7 rounded-full object-cover"
-									/>
-									<h2>{item.provider.name}</h2>
-								</div>
-
-								{/* Title */}
-								<div className="text-[16px] h-[55] w-full">
-									<CardTitle>{item.title}</CardTitle>
-								</div>
-
-								{/* Description */}
-								<div className="text-muted-foreground text-[13px] w-full">
-									<p>{item.description}</p>
-								</div>
-							</div>
-						</Card>
+						</motion.div>
 					))}
 				</div>
 			</section>

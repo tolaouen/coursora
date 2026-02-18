@@ -310,7 +310,7 @@ export default function Home() {
 		},
 	];
 	return (
-		<div className="w-full max-w-7xl mx-auto ">
+		<div className="w-full max-w-7xl mx-auto my-22">
 			{/* Categories section */}
 			<section className="flex flex-col gap-2 mt-10">
 				<div className="flex flex-col gap-2">
@@ -322,15 +322,13 @@ export default function Home() {
 				<div className="flex flex-row lg:gap-5">
 					<div className="lg:flex lg:flex-row lg:justify-center lg:items-center lg:flex-nowrap lg:gap-2 md:flex md:flex-row md:flex-wrap md:jusitify-center md:items-center sm:flex sm:flex-row sm:flex-wrap sm:justify-center sm:items-center md:gap-2 sm:gap-2 flex flex-row flex-wrap  items-center gap-2">
 						{categories_first.map((items) => (
-							<div>
-								<Button
-									key={items.name}
-									variant={"secondary"}
-									className="text-[8px] rounded-2xl md:text-[10px] lg:text-[11px] capitalize">
-									{items.icon}
-									{items.name}
-								</Button>
-							</div>
+							<Button
+								key={items.name}
+								variant={"secondary"}
+								className="text-[8px] rounded-2xl md:text-[10px] lg:text-[11px] capitalize">
+								{items.icon}
+								{items.name}
+							</Button>
 						))}
 					</div>
 					{/* Search dialog  content */}
@@ -462,7 +460,7 @@ export default function Home() {
 			<section className="my-8 md:px-0">
 				<main>
 					<Card className="flex flex-col lg:flex-row gap-3 p-4 md:p-6 bg-linear-to-r from-cyan-500 to-blue-500 rounded-lg">
-						<div className="flex flex-col justify-center gap-3 lg:min-w-[180px] w-[350px]">
+						<div className="flex flex-col justify-center gap-3 lg:min-w-[180] w-[350]">
 							<h3 className="text-xl md:text-2xl font-semibold text-white text-balance">
 								Hot new releases
 							</h3>

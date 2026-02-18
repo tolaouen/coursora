@@ -86,7 +86,7 @@ export default function DetailPage() {
 		<section>
 			{/* Card display detail view course */}
 			<div>
-				<Card className="lg:p-3 md:p-3 sm:p-2 p-1 lg:rounded-4xl md:rounded-3xl sm:rounded-2xl rounded-md bg-[#D9D9D9]">
+				<Card className="lg:px-3 md:px-3 sm:px-2 px-1 lg:pt-3 md:pt-3 sm:pt-2 pt-1 rounded-none bg-[#D9D9D9]">
 					{/* Card detail about course */}
 					<div>
 						<Card className="flex flex-row lg:gap-10 md:gap-7 sm:gap-5 gap-2 items-center p-1 lg:p-4 md:p-3 sm:p-2 ">
@@ -137,7 +137,7 @@ export default function DetailPage() {
 												</Button>
 											</DialogTrigger>
 											{/* Card dialog content login and register top up size */}
-											<DialogContent className="sm:max-w-md lg:w-[95%] md:w-[95%] sm:w-[95%] w-full rounded-xl p-6 fixed lg:top-65 top-55">
+											<DialogContent className="sm:max-w-md lg:w-[95%] md:w-[95%] sm:w-[95%] w-full rounded-xl p-6 fixed lg:top-65 top-55 ">
 												<div className="flex flex-col mt-5 gap-6">
 													<div>
 														<h3 className="text-2xl sm:text-3xl font-semibold">
@@ -180,25 +180,25 @@ export default function DetailPage() {
 						</Card>
 					</div>
 					{/* Course description detail */}
-					<div className="flex flex-row lg:gap-4 p-4 items-center justify-between">
-						<div className="lg:w-[800] md:w-[600]">
-							<div className="mb-2">
-								{/* Objective course */}
-								<CardTitle className="font-semibold capitalize lg:text-[20px] md:text-[18px] sm:text-[16px] text-[14px]">
+					<div className="flex flex-col lg:flex-row gap-6 lg:gap-8 px-2 lg:px-4 items-start justify-between">
+						{/* Left: Objective + Learning Outcomes */}
+						<div className="w-full lg:flex-1">
+							<div className="mb-4">
+								<CardTitle className="font-semibold capitalize text-sm sm:text-base md:text-lg lg:text-xl mb-2">
 									Objective
 								</CardTitle>
-								<ul className="list-disc px-6 text-muted-foreground font-medium lg:text-[16px] md:text-[14px] sm:text-[12px] text-[8px]">
+								<ul className="list-disc px-5 text-muted-foreground font-medium text-xs sm:text-sm md:text-sm lg:text-base space-y-1">
 									<li>{objective_li_1}</li>
-									<li>{objective_li_2} </li>
-									<li>{objective_li_3} </li>
+									<li>{objective_li_2}</li>
+									<li>{objective_li_3}</li>
 								</ul>
 							</div>
+
 							<div className="mt-5">
-								{/* Learning outcomin course */}
-								<CardTitle className="lg:text-[20px] md:text-[18px] sm:text-[16px] text-[14px] font-semibold capitalize">
-									Learning Outcoming
+								<CardTitle className="font-semibold capitalize text-sm sm:text-base md:text-lg lg:text-xl mb-2">
+									Learning Outcomes
 								</CardTitle>
-								<ul className="list-disc px-6 text-muted-foreground font-medium lg:text-[16px] md:text-[14px] sm:text-[12px] text-[8px]">
+								<ul className="list-disc px-5 text-muted-foreground font-medium text-xs sm:text-sm md:text-sm lg:text-base space-y-1">
 									<li>{learning_li_1}</li>
 									<li>{learning_li_2}</li>
 									<li>{learning_li_3}</li>
@@ -206,26 +206,26 @@ export default function DetailPage() {
 								</ul>
 							</div>
 						</div>
-						<div className="border border-[#aaa3a3] rounded-2xl lg:p-3 md:p-2 sm:p-1 p-1 w-60 ">
-							<div>
-								<h3 className="lg:text-[20px] md:text-[16px] sm:text-[14px] text-[10px] font-bold">
-									Course Overview
-								</h3>
-							</div>
+
+						{/* Right: Course Overview Card */}
+						<div className="w-full lg:w-64 border-t border-r border-l rounded-tl-2xl rounded-tr-2xl border-[#b5b3b3] px-3 lg:px-4 py-3 flex flex-col gap-3">
+							<h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">
+								Course Overview
+							</h3>
+
 							{course.map((item) => (
 								<div
 									key={item.id}
-									className="flex flex-row gap-3 items-center capitalize mt-2">
-									<div>
-										<Button
-											variant={"secondary"}
-											className="font-bold rounded-full bg-[#9294f8] text-white w-[10] h-[23] sm:w-[25] sm:h-[25] md:w-[35] md:h-[30] lg:w-[40] lg:h-[40] object-cover">
-											{item.icon}
-										</Button>
-									</div>
-									<div className="lg:text-[14px] md:text-[12px] sm:text-[10px] text-[6px] font-meduim">
+									className="flex flex-row gap-3 items-center capitalize">
+									<Button
+										variant="secondary"
+										size="icon"
+										className="font-bold rounded-full bg-[#9369e7] text-[#faccff] shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-11 lg:h-11">
+										{item.icon}
+									</Button>
+									<div className="text-xs sm:text-sm md:text-sm lg:text-sm font-medium">
 										<h4 className="text-muted-foreground">{item.tags.title}</h4>
-										<h5 className="text-">{item.tags.description}</h5>
+										<h5>{item.tags.description}</h5>
 									</div>
 								</div>
 							))}

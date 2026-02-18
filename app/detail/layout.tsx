@@ -14,12 +14,12 @@ export default function DetailLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<main className="mx-10 my-10">
+		<main className="lg:mx-10 md:mx-8 sm:mx-6 mx-4 my-10">
 			{/* <div className="flex flex-col w-full">
 				<NavbarPage />
 			</div> */}
-			<div className="my-2">
-				<div className="flex flex-row font-sm text-[12px] items-center gap-1 text-muted-foreground font-semibold">
+			<div className="mt-23 mb-2">
+				<div className="flex flex-row font-sm lg:text-[12px] text-[10px] items-center gap-1 text-muted-foreground font-semibold">
 					<div>
 						<a href="/">
 							<Home width={15} />
